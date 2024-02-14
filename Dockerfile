@@ -10,6 +10,9 @@ COPY . .
 # Compilar la aplicación
 RUN go build -o main .
 
+# Dar permisos de ejecución al archivo main
+RUN chmod +x main
+
 # Segunda etapa para reducir el tamaño de la imagen
 FROM alpine:latest
 
