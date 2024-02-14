@@ -21,7 +21,7 @@ WORKDIR /root/
 
 # Copiar el ejecutable desde la etapa de compilación
 COPY --from=builder /go/src/app/main .
-
+RUN chmod +x main
 # Exponer el puerto en el que se ejecuta la aplicación
 EXPOSE 8080
 
