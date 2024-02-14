@@ -1,5 +1,5 @@
 # Usar la imagen oficial de Go como base
-FROM golang:1.17-alpine AS builder
+FROM golang:1.21.6-alpine AS builder
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /go/src/app
