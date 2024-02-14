@@ -1,16 +1,14 @@
 # Usar la imagen oficial de Go como base
-FROM golang:1.21.6-alpine
+FROM golang:1.21.6
 
 WORKDIR /app
 
-COPY go.mod ./
+COPY go.mod go.sum ./
 RUN go mod download
-RUN go get myapp
-
 COPY *.go ./
 
-RUN go build -o main .
+RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-ping
 
 EXPOSE 8080
 
-CMD [ "./main" ]
+CMD ["/docker-gs-ping"]
