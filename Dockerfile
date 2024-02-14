@@ -1,5 +1,5 @@
 # Usar la imagen oficial de Go como base
-FROM golang:alpine
+FROM golang:1.17-alpine AS builder
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /go/src/app
@@ -9,9 +9,6 @@ COPY . .
 
 # Compilar la aplicación
 RUN go build -o main .
-
-# Dar permisos de ejecución al archivo main
-RUN chmod +x main
 
 # Segunda etapa para reducir el tamaño de la imagen
 FROM alpine:latest
